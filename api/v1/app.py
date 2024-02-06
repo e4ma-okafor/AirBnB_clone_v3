@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-""" Script that imports a Blueprint and runs Flask """
+"""
+creates instance of Flask and registers blueprint to instance
+"""
+
 from flask import Flask, make_response, jsonify
 from flask_cors import CORS
 from models import storage
@@ -32,7 +35,9 @@ swagger = Swagger(app)
 
 @app.teardown_appcontext
 def teardown_session(exception):
-    """ Closes storage session """
+     """
+    closes current session through storage.close()
+    """
     storage.close()
 
 
